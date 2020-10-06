@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace NewsAppMobile
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace NewsAppMobile.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FeedNewsPage : ContentPage
     {
-        public MainPage()
+        public FeedNewsPage()
         {
             InitializeComponent();
         }
