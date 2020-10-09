@@ -14,21 +14,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms.Internals;
 
 namespace NewsAppMobile.Views
 {
     public class FeedNewsViewModel : BaseViewModel
     {      
         private readonly IApiNewsService newsService;
+        public bool WelcomeMessage { get; set; }
         public DelegateCommand GetNewsCommand { get; set; }
+        public DelegateCommand GetOrientation { get; set; }
+        public DelegateCommand<string> GetNewsTyped { get; set; }
         public IEnumerable<Article> News { get; set; }
 
         public FeedNewsViewModel(PageDialogService pageDialogService, INavigationService navigationService, IApiNewsService apiNewsService) :base(pageDialogService, navigationService)
         {
             newsService = apiNewsService;
+            GetNewsTyped = new DelegateCommand<string>(SearchNews);
             GetNewsCommand = new DelegateCommand(async () => GetNews());
             GetNewsCommand.Execute();
-        }
+        }       
 
         async Task GetNews()
         {
@@ -48,6 +53,21 @@ namespace NewsAppMobile.Views
             }
         }
 
-        
+        async void SearchNews(string text)
+        {
+            if (text.Length >= 1)
+            {
+                var suggestions = News.Where(elem => elem.Title == text || elem.Author == text || elem.Description == text).ToList();
+
+                var newlist = News.ToList();
+
+                newlist.Clear();
+
+                News = suggestions;
+            }
+        }
+       
+
+
     }
 }

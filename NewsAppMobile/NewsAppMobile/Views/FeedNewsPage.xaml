@@ -20,9 +20,47 @@
             Grid.RowSpan="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Padding="0">
-            <StackLayout BackgroundColor="#1976D2" />
+            Padding="0"
+            CornerRadius="2"
+            Elevation="55"
+            LightThemeBackgroundColor="#1976D2">
+            <StackLayout Padding="15">
+                <Label
+                    Margin="10,0,0,0"
+                    FontSize="20"
+                    Text="Hey, Abraham!"
+                    TextColor="#ffffff" />
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="30"
+                    HorizontalTextAlignment="Center"
+                    Text="Discover the latest news!"
+                    TextColor="#ffffff" />
+                <SearchBar
+                    x:Name="TypeNews"
+                    CancelButtonColor="#ffffff"
+                    Placeholder="Search"
+                    PlaceholderColor="#ffffff"
+                    SearchCommand="{Binding GetNewsTyped}"
+                    SearchCommandParameter="{Binding Text, Source={x:Reference TypeNews}}"
+                    Visual="Material" />
+            </StackLayout>
         </MaterialFrame:MaterialFrame>
+        <CollectionView
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Image Aspect="AspectFill" Source="icons8_world_cup.ico" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <CollectionView
             Grid.Row="2"
             Grid.RowSpan="2"
@@ -45,7 +83,10 @@
                             LightThemeBackgroundColor="#121212">
                             <StackLayout>
                                 <Image Aspect="AspectFill" Source="{Binding UrlToImage}" />
-                                <Label Text="{Binding Title}" />
+                                <Label
+                                    FontSize="20"
+                                    Text="{Binding Title}"
+                                    VerticalTextAlignment="Center" />
                             </StackLayout>
                         </MaterialFrame:MaterialFrame>
                     </Grid>

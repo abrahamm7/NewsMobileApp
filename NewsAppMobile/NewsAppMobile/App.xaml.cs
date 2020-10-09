@@ -6,6 +6,7 @@ using Prism.Ioc;
 using Prism.Unity;
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace NewsAppMobile
@@ -43,6 +44,9 @@ namespace NewsAppMobile
 
             //Services//
             containerRegistry.Register<IApiNewsService, ApiNewsService>();
+            //containerRegistry.Register<IDeviceOrientation>();
+
+
         }
     }
 }

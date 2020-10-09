@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Xamarin.Forms.Internals;
 
 namespace NewsAppMobile.Droid
 {
@@ -21,8 +22,9 @@ namespace NewsAppMobile.Droid
 
             base.OnCreate(savedInstanceState);
 
+            Xamarin.Forms.Forms.SetFlags(new string[] { "CollectionView_Experimental", "Expander_Experimental" });
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);            
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitialize()));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -36,8 +38,10 @@ namespace NewsAppMobile.Droid
         {
             public void RegisterTypes(IContainerRegistry containerRegistry)
             {
-
+                
             }
         }
+
+        
     }
 }
