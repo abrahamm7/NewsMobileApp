@@ -69,6 +69,9 @@
     <PackageReference Include="Refit">
       <Version>5.2.1</Version>
     </PackageReference>
+    <PackageReference Include="Refractored.FloatingActionButtonForms">
+      <Version>2.1.0</Version>
+    </PackageReference>
     <PackageReference Include="Sharpnado.MaterialFrame">
       <Version>1.1.2</Version>
     </PackageReference>
@@ -114,19 +117,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icons8_world_cup.ico" />
+    <AndroidResource Include="Resources\drawable\icons8_menu.ico" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icons8_world_cup_16.png" />
+    <AndroidResource Include="Resources\drawable\icons8_menu_16.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icons8_world_cup_32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icons8_world_cup_48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icons8_world_cup_64.png" />
+    <AndroidResource Include="Resources\drawable\icons8_menu_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

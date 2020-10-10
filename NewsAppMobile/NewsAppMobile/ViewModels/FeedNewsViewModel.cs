@@ -23,7 +23,6 @@ namespace NewsAppMobile.Views
         private readonly IApiNewsService newsService;
         public bool WelcomeMessage { get; set; }
         public DelegateCommand GetNewsCommand { get; set; }
-        public DelegateCommand GetOrientation { get; set; }
         public DelegateCommand<string> GetNewsTyped { get; set; }
         public IEnumerable<Article> News { get; set; }
 

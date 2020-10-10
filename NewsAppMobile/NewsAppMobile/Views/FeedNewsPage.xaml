@@ -3,7 +3,8 @@
     x:Class="NewsAppMobile.Views.FeedNewsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:MaterialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame">
+    xmlns:MaterialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:fab="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -25,45 +26,28 @@
             Elevation="55"
             LightThemeBackgroundColor="#1976D2">
             <StackLayout Padding="15">
+                <fab:FloatingActionButtonView
+                    ColorNormal="#1976D2"
+                    ColorPressed="#121212"
+                    HorizontalOptions="End"
+                    ImageName="icons8_menu_32.png" />
                 <Label
                     Margin="10,0,0,0"
                     FontSize="20"
                     Text="Hey, Abraham!"
                     TextColor="#ffffff" />
                 <Label
-                    Margin="0,20,0,0"
+                    Margin="0,0,0,0"
                     FontSize="30"
                     HorizontalTextAlignment="Center"
                     Text="Discover the latest news!"
-                    TextColor="#ffffff" />
-                <SearchBar
-                    x:Name="TypeNews"
-                    CancelButtonColor="#ffffff"
-                    Placeholder="Search"
-                    PlaceholderColor="#ffffff"
-                    SearchCommand="{Binding GetNewsTyped}"
-                    SearchCommandParameter="{Binding Text, Source={x:Reference TypeNews}}"
-                    Visual="Material" />
+                    TextColor="#ffffff"
+                    VerticalOptions="StartAndExpand" />
             </StackLayout>
         </MaterialFrame:MaterialFrame>
         <CollectionView
             Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="2">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Image Aspect="AspectFill" Source="icons8_world_cup.ico" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <CollectionView
-            Grid.Row="2"
-            Grid.RowSpan="2"
+            Grid.RowSpan="3"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             ItemsSource="{Binding News}">
