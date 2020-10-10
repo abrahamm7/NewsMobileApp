@@ -29,6 +29,7 @@
                 <fab:FloatingActionButtonView
                     ColorNormal="#1976D2"
                     ColorPressed="#121212"
+                    Command="{Binding OpenMenuPop}"
                     HorizontalOptions="End"
                     ImageName="icons8_menu_32.png" />
                 <Label

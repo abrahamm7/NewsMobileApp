@@ -23,12 +23,14 @@ namespace NewsAppMobile.Views
         private readonly IApiNewsService newsService;
         public bool WelcomeMessage { get; set; }
         public DelegateCommand GetNewsCommand { get; set; }
+        public DelegateCommand OpenMenuPop { get; set; }
         public DelegateCommand<string> GetNewsTyped { get; set; }
         public IEnumerable<Article> News { get; set; }
 
         public FeedNewsViewModel(PageDialogService pageDialogService, INavigationService navigationService, IApiNewsService apiNewsService) :base(pageDialogService, navigationService)
         {
             newsService = apiNewsService;
+            OpenMenuPop = new DelegateCommand(async () => ShowPop());
             GetNewsTyped = new DelegateCommand<string>(SearchNews);
             GetNewsCommand = new DelegateCommand(async () => GetNews());
             GetNewsCommand.Execute();
@@ -66,6 +68,10 @@ namespace NewsAppMobile.Views
             }
         }
        
+        async void ShowPop()
+        {
+            await NavigationService.NavigateAsync("PopMenu");
+        }
 
 
     }

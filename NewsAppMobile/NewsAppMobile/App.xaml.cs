@@ -3,6 +3,7 @@ using NewsAppMobile.Services;
 using NewsAppMobile.Views;
 using Prism;
 using Prism.Ioc;
+using Prism.Plugin.Popups;
 using Prism.Unity;
 using System;
 using Xamarin.Forms;
@@ -40,6 +41,8 @@ namespace NewsAppMobile
         {
             //Pages//
             containerRegistry.RegisterForNavigation<FeedNewsPage, FeedNewsViewModel>();
+            containerRegistry.RegisterForNavigation<PopMenu>();
+            containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterForNavigation<NavigationPage>();
 
             //Services//
