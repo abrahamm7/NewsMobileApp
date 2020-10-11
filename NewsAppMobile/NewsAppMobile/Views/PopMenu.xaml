@@ -12,7 +12,7 @@
                     FontSize="25"
                     Text="Choose Category"
                     TextColor="#ffffff" />
-                <SearchBar Placeholder="Search thing" />
+                <SearchBar Placeholder="Search" />
                 <StackLayout VerticalOptions="StartAndExpand">
                     <CollectionView ItemsSource="{Binding Categories}">
                         <CollectionView.ItemTemplate>

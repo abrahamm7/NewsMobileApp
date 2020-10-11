@@ -54,6 +54,7 @@
             </StackLayout>
         </MaterialFrame:MaterialFrame>
         <CollectionView
+            x:Name="NewsList"
             Grid.Row="1"
             Grid.RowSpan="3"
             Grid.Column="0"
@@ -83,7 +84,11 @@
                                 </StackLayout>
                             </MaterialFrame:MaterialFrame>
                             <SwipeView.LeftItems>
-                                <SwipeItem Text="Share" />
+                                <SwipeItem
+                                    Command="{Binding Path=BindingContext.ShareNewsCommand, Source={x:Reference NewsList}}"
+                                    CommandParameter="{Binding .}"
+                                    IconImageSource="icons8_share_64.png"
+                                    Text="Share" />
                             </SwipeView.LeftItems>
                         </SwipeView>
                     </Grid>

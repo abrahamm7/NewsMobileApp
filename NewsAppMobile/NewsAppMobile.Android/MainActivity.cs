@@ -9,6 +9,7 @@ using Android.OS;
 using Prism;
 using Prism.Ioc;
 using Xamarin.Forms.Internals;
+using Plugin.CurrentActivity;
 
 namespace NewsAppMobile.Droid
 {
