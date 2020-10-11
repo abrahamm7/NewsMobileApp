@@ -4,7 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:MaterialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
-    xmlns:fab="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl">
+    xmlns:fab="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
+    xmlns:local="clr-namespace:NewsAppMobile.Effects">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -24,14 +25,20 @@
             Padding="0"
             CornerRadius="2"
             Elevation="55"
-            LightThemeBackgroundColor="#1976D2">
+            LightThemeBackgroundColor="#f72585">
             <StackLayout Padding="15">
                 <fab:FloatingActionButtonView
-                    ColorNormal="#1976D2"
+                    ColorNormal="#f72585"
                     ColorPressed="#121212"
                     Command="{Binding OpenMenuPop}"
                     HorizontalOptions="End"
-                    ImageName="icons8_menu_32.png" />
+                    ImageName="icons8_menu_32.png">
+                    <fab:FloatingActionButtonView.Triggers>
+                        <EventTrigger Event="Clicked">
+                            <local:TapButtonMenu />
+                        </EventTrigger>
+                    </fab:FloatingActionButtonView.Triggers>
+                </fab:FloatingActionButtonView>
                 <Label
                     Margin="10,0,0,0"
                     FontSize="20"
@@ -61,21 +68,27 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <MaterialFrame:MaterialFrame
-                            CornerRadius="10"
-                            Elevation="25"
-                            HeightRequest="250"
-                            LightThemeBackgroundColor="#121212">
-                            <StackLayout>
-                                <Image Aspect="AspectFill" Source="{Binding UrlToImage}" />
-                                <Label
-                                    FontSize="20"
-                                    Text="{Binding Title}"
-                                    VerticalTextAlignment="Center" />
-                            </StackLayout>
-                        </MaterialFrame:MaterialFrame>
+                        <SwipeView>
+                            <MaterialFrame:MaterialFrame
+                                CornerRadius="10"
+                                Elevation="25"
+                                HeightRequest="250"
+                                LightThemeBackgroundColor="#121212">
+                                <StackLayout>
+                                    <Image Aspect="AspectFill" Source="{Binding UrlToImage}" />
+                                    <Label
+                                        FontSize="20"
+                                        Text="{Binding Title}"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </MaterialFrame:MaterialFrame>
+                            <SwipeView.LeftItems>
+                                <SwipeItem Text="Share" />
+                            </SwipeView.LeftItems>
+                        </SwipeView>
                     </Grid>
                 </DataTemplate>
+
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>

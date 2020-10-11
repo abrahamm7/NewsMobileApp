@@ -6,12 +6,13 @@
     xmlns:MaterialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
     <StackLayout AnchorY="30" VerticalOptions="End">
-        <MaterialFrame:MaterialFrame HeightRequest="300">
+        <MaterialFrame:MaterialFrame HeightRequest="300" LightThemeBackgroundColor="#2A2A2A">
             <StackLayout>
                 <Label
                     FontSize="25"
-                    Text="Select Category"
-                    TextColor="#000000" />
+                    Text="Choose Category"
+                    TextColor="#ffffff" />
+                <SearchBar Placeholder="Search thing" />
                 <StackLayout VerticalOptions="StartAndExpand">
                     <CollectionView ItemsSource="{Binding Categories}">
                         <CollectionView.ItemTemplate>
@@ -26,12 +27,13 @@
                                     <MaterialFrame:MaterialFrame
                                         CornerRadius="10"
                                         Elevation="5"
+                                        LightThemeBackgroundColor="#121212"
                                         MaterialTheme="Light">
                                         <StackLayout Padding="15">
                                             <Label
                                                 FontSize="15"
                                                 Text="{Binding}"
-                                                TextColor="#000000" />
+                                                TextColor="#ffffff" />
                                         </StackLayout>
                                     </MaterialFrame:MaterialFrame>
                                 </Grid>

@@ -70,7 +70,7 @@ namespace NewsAppMobile.Views
        
         async void ShowPop()
         {
-            await NavigationService.NavigateAsync("PopMenu");
+            await NavigationService.NavigateAsync(Links.PopMenuPage);
         }
 
 
