@@ -14,7 +14,7 @@
                     TextColor="#ffffff" />
                 <SearchBar Placeholder="Search" />
                 <StackLayout VerticalOptions="StartAndExpand">
-                    <CollectionView ItemsSource="{Binding Categories}">
+                    <CollectionView x:Name="TopicsView" ItemsSource="{Binding Categories}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="15">
@@ -35,6 +35,9 @@
                                                 Text="{Binding}"
                                                 TextColor="#ffffff" />
                                         </StackLayout>
+                                        <MaterialFrame:MaterialFrame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TapTopic, Source={x:Reference TopicsView}}" CommandParameter="{Binding .}" />
+                                        </MaterialFrame:MaterialFrame.GestureRecognizers>
                                     </MaterialFrame:MaterialFrame>
                                 </Grid>
                             </DataTemplate>

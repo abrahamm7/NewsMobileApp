@@ -18,6 +18,7 @@ namespace NewsAppMobile.ViewModels
         public List<string> Categories { get; set; }
         
         public DelegateCommand FillListCommand { get; set; }
+        public DelegateCommand<string> TapTopic { get; set; }
 
         public readonly string[] strings = new[] {
         "Movies",
@@ -28,6 +29,8 @@ namespace NewsAppMobile.ViewModels
 
         public PopMenuViewModel()
         {
+            TapTopic = new DelegateCommand<string>(SelectTopic);
+
             FillListCommand = new DelegateCommand(async () => FillCategories());
             FillListCommand.Execute();
         }
@@ -35,8 +38,12 @@ namespace NewsAppMobile.ViewModels
         async Task FillCategories()
         {
             var filter = strings.ToList();
-            Categories = filter;         
-           
+            Categories = filter;      
+        }
+
+        async void SelectTopic(string topic)
+        {
+
         }
 
     }

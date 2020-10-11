@@ -9,7 +9,12 @@ namespace NewsAppMobile.Services
 {
     public interface IApiNewsService
     {
-        [Get("/newsapi.org/v2/everything?apiKey=2b6d74babe00414b91370d5e0bd85b35&q=tecnology")]
+        [Get("/newsapi.org/v2/everything")]
         Task<News> GetNews();
+
+        [Get("/newsapi.org/v2/everything")]
+        Task<News> GetSpecifiedNews(string topic);
+
+        
     }
 }

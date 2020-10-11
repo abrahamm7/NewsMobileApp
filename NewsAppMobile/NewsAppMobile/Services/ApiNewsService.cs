@@ -27,5 +27,21 @@ namespace NewsAppMobile.Services
                 return null;
             }
         }
+
+        public async Task<News> GetSpecifiedNews(string topic)
+        {
+            Links links = new Links(topic);
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                var result = await httpClient.GetStringAsync(links.SpecifiedNews);
+                return JsonConvert.DeserializeObject<News>(result);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"{ex.Message}");
+                return null;
+            }
+        }
     }
 }

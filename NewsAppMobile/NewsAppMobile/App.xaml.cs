@@ -48,7 +48,7 @@ namespace NewsAppMobile
 
             //Services//
             containerRegistry.Register<IApiNewsService, ApiNewsService>();
-            //containerRegistry.Register<IDeviceOrientation>();
+            
 
 
         }
