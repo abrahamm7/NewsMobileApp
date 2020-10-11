@@ -3,11 +3,43 @@
     x:Class="NewsAppMobile.Views.PopMenu"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:MaterialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
-    <StackLayout>
-        <Label
-            HorizontalOptions="CenterAndExpand"
-            Text="Welcome to Xamarin.Forms!"
-            VerticalOptions="CenterAndExpand" />
+    <StackLayout AnchorY="30" VerticalOptions="End">
+        <MaterialFrame:MaterialFrame HeightRequest="300">
+            <StackLayout>
+                <Label
+                    FontSize="25"
+                    Text="Select Category"
+                    TextColor="#000000" />
+                <StackLayout VerticalOptions="StartAndExpand">
+                    <CollectionView ItemsSource="{Binding Categories}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <MaterialFrame:MaterialFrame
+                                        CornerRadius="10"
+                                        Elevation="5"
+                                        MaterialTheme="Light">
+                                        <StackLayout Padding="15">
+                                            <Label
+                                                FontSize="15"
+                                                Text="{Binding}"
+                                                TextColor="#000000" />
+                                        </StackLayout>
+                                    </MaterialFrame:MaterialFrame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </MaterialFrame:MaterialFrame>
     </StackLayout>
 </pages:PopupPage>

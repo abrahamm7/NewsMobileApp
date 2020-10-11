@@ -1,6 +1,8 @@
 ﻿using Prism;
 using Prism.Navigation;
 using Prism.Services;
+using Rg.Plugins.Popup.Contracts;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,7 @@ namespace NewsAppMobile.ViewModels
 
         public IPageDialogService PageDialogService { get; set; }
         public INavigationService NavigationService { get; set; }
+        
 
         public void Initialize(INavigationParameters parameters)
         {
@@ -26,7 +29,7 @@ namespace NewsAppMobile.ViewModels
         public BaseViewModel(PageDialogService pageDialogService, INavigationService navigationService)
         {
             PageDialogService = pageDialogService;
-            NavigationService = navigationService;
+            NavigationService = navigationService;           
         }
 
         public async Task<bool> HasInternetConnection(bool sendMessage = false)

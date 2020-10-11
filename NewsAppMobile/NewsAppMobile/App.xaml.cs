@@ -1,5 +1,6 @@
 ﻿using NewsAppMobile.NavigationLinks;
 using NewsAppMobile.Services;
+using NewsAppMobile.ViewModels;
 using NewsAppMobile.Views;
 using Prism;
 using Prism.Ioc;
@@ -41,7 +42,7 @@ namespace NewsAppMobile
         {
             //Pages//
             containerRegistry.RegisterForNavigation<FeedNewsPage, FeedNewsViewModel>();
-            containerRegistry.RegisterForNavigation<PopMenu>();
+            containerRegistry.RegisterForNavigation<PopMenu, PopMenuViewModel>();
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterForNavigation<NavigationPage>();
 
