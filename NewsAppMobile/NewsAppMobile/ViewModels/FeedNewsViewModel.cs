@@ -26,7 +26,7 @@ namespace NewsAppMobile.Views
         public DelegateCommand GetNewsCommand { get; set; }
         public DelegateCommand<object> ShareNewsCommand { get; set; }
         public DelegateCommand OpenMenuPop { get; set; }
-        public DelegateCommand<string> GetNewsTyped { get; set; }
+       
         public IEnumerable<Article> News { get; set; }
 
         public FeedNewsViewModel(PageDialogService pageDialogService, INavigationService navigationService, IApiNewsService apiNewsService) :base(pageDialogService, navigationService)
@@ -36,8 +36,6 @@ namespace NewsAppMobile.Views
             ShareNewsCommand = new DelegateCommand<object>(ShareNews);
 
             OpenMenuPop = new DelegateCommand(async () => ShowPop());
-
-            GetNewsTyped = new DelegateCommand<string>(SearchNews);
 
             GetNewsCommand = new DelegateCommand(async () => GetNews());
             GetNewsCommand.Execute();
@@ -59,21 +57,7 @@ namespace NewsAppMobile.Views
                 Debug.WriteLine($"{ex.Message}");
                 await ShowMessage("Error","An error occured", "Ok");
             }
-        }
-
-        async void SearchNews(string text)
-        {
-            if (text.Length >= 1)
-            {
-                var suggestions = News.Where(elem => elem.Title == text || elem.Author == text || elem.Description == text).ToList();
-
-                var newlist = News.ToList();
-
-                newlist.Clear();
-
-                News = suggestions;
-            }
-        }
+        }        
        
         async void ShowPop()
         {

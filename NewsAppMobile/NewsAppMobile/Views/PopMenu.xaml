@@ -10,9 +10,13 @@
             <StackLayout>
                 <Label
                     FontSize="25"
-                    Text="Choose Category"
+                    Text="Choose topic"
                     TextColor="#ffffff" />
-                <SearchBar Placeholder="Search" />
+                <SearchBar
+                    x:Name="SearchBarTopic"
+                    Placeholder="Search"
+                    SearchCommand="{Binding GetNewsTyped}"
+                    SearchCommandParameter="{Binding Text, Source={x:Reference SearchBarTopic}}" />
                 <StackLayout VerticalOptions="StartAndExpand">
                     <CollectionView x:Name="TopicsView" ItemsSource="{Binding Categories}">
                         <CollectionView.ItemTemplate>

@@ -1,4 +1,5 @@
 ﻿using NewsAppMobile.Models;
+using NewsAppMobile.Services;
 using Prism.Commands;
 using Prism.Services;
 using System;
@@ -19,6 +20,9 @@ namespace NewsAppMobile.ViewModels
         
         public DelegateCommand FillListCommand { get; set; }
         public DelegateCommand<string> TapTopic { get; set; }
+        public DelegateCommand<string> GetNewsTyped { get; set; }
+
+        //private readonly IApiNewsService newsService;
 
         public readonly string[] strings = new[] {
         "Movies",
@@ -27,9 +31,13 @@ namespace NewsAppMobile.ViewModels
         "Technology",        
         };
 
-        public PopMenuViewModel()
+        public PopMenuViewModel(IApiNewsService apiNews)
         {
+            //newsService = apiNews;
+
             TapTopic = new DelegateCommand<string>(SelectTopic);
+
+            GetNewsTyped = new DelegateCommand<string>(SearchTopic);
 
             FillListCommand = new DelegateCommand(async () => FillCategories());
             FillListCommand.Execute();
@@ -44,6 +52,24 @@ namespace NewsAppMobile.ViewModels
         async void SelectTopic(string topic)
         {
 
+        }
+
+        async void SearchTopic(string text)
+        {
+            var filter = strings.ToList();
+            var topic = char.ToUpper(text[0]) + text.Substring(1);
+            if (topic.Length >= 1)
+            {
+                var suggestions = filter.Where(elem => elem == topic).ToList();
+
+                Categories.Clear();
+
+                Categories = suggestions;
+            }
+            else if(string.IsNullOrEmpty(topic))
+            {
+                Categories = filter;
+            }
         }
 
     }
