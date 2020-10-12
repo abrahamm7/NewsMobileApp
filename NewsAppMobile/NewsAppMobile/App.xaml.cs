@@ -42,6 +42,7 @@ namespace NewsAppMobile
         {
             //Pages//
             containerRegistry.RegisterForNavigation<FeedNewsPage, FeedNewsViewModel>();
+            containerRegistry.RegisterForNavigation<NewsDetailsPage, NewsDetailsViewModel>();
             containerRegistry.RegisterForNavigation<PopMenu, PopMenuViewModel>();
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterForNavigation<NavigationPage>();

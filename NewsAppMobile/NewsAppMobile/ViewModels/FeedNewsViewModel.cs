@@ -22,26 +22,28 @@ namespace NewsAppMobile.Views
     public class FeedNewsViewModel : BaseViewModel
     {      
         private readonly IApiNewsService newsService;
-        public bool WelcomeMessage { get; set; }
         public DelegateCommand GetNewsCommand { get; set; }
         public DelegateCommand<object> ShareNewsCommand { get; set; }
+        public DelegateCommand<object> TapNews { get; set; }
         public DelegateCommand OpenMenuPop { get; set; }
        
         public IEnumerable<Article> News { get; set; }
 
-        public FeedNewsViewModel(PageDialogService pageDialogService, INavigationService navigationService, IApiNewsService apiNewsService) :base(pageDialogService, navigationService)
+        public FeedNewsViewModel(PageDialogService pageDialogService, INavigationService navigationService, IApiNewsService apiNewsService) :base(pageDialogService, navigationService )
         {
             newsService = apiNewsService;
 
             ShareNewsCommand = new DelegateCommand<object>(ShareNews);
 
+            TapNews = new DelegateCommand<object>(SelectNews);
+
             OpenMenuPop = new DelegateCommand(async () => ShowPop());
 
             GetNewsCommand = new DelegateCommand(async () => GetNews());
             GetNewsCommand.Execute();
-        }       
+        }
 
-        async Task GetNews()
+        public async Task GetNews()
         {
             try
             {
@@ -59,16 +61,25 @@ namespace NewsAppMobile.Views
             }
         }        
        
-        async void ShowPop()
+        public async void ShowPop()
         {
             await NavigationService.NavigateAsync(Links.PopMenuPage);
         }
 
-        async void ShareNews(object obj)
+        public async void ShareNews(object obj)
         {
             var news = obj as Article;
             await Share.RequestAsync(new ShareTextRequest { Title = $"{news.Title}", Text = $"{news.Url}" });
         }
+
+        public async void SelectNews(object obj)
+        {
+            await NavigationService.NavigateAsync(new Uri(Links.NewsDetailsPage, UriKind.Relative));
+        }
+
+
+
+
 
 
     }

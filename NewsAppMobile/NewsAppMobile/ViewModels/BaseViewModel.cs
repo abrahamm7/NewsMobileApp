@@ -62,6 +62,11 @@ namespace NewsAppMobile.ViewModels
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             //Nothing for now//
+            if (parameters.Count == 0) 
+            {
+                var key = parameters.GetValue<string>("Category");           
+            }
+
         }
     }
 }

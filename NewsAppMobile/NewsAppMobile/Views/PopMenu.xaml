@@ -16,7 +16,8 @@
                     x:Name="SearchBarTopic"
                     Placeholder="Search"
                     SearchCommand="{Binding GetNewsTyped}"
-                    SearchCommandParameter="{Binding Text, Source={x:Reference SearchBarTopic}}" />
+                    SearchCommandParameter="{Binding Text, Source={x:Reference SearchBarTopic}}"
+                    TextColor="#ffffff" />
                 <StackLayout VerticalOptions="StartAndExpand">
                     <CollectionView x:Name="TopicsView" ItemsSource="{Binding Categories}">
                         <CollectionView.ItemTemplate>

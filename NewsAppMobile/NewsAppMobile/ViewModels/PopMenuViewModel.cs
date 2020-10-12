@@ -1,7 +1,9 @@
 ﻿using NewsAppMobile.Models;
 using NewsAppMobile.Services;
 using Prism.Commands;
+using Prism.Navigation;
 using Prism.Services;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace NewsAppMobile.ViewModels
 {
-    public class PopMenuViewModel: INotifyPropertyChanged
+    public class PopMenuViewModel: INotifyPropertyChanged, INavigatedAware
     {
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -22,7 +24,9 @@ namespace NewsAppMobile.ViewModels
         public DelegateCommand<string> TapTopic { get; set; }
         public DelegateCommand<string> GetNewsTyped { get; set; }
 
-        //private readonly IApiNewsService newsService;
+        public string Topic { get; set; }
+
+        private readonly IApiNewsService newsService;
 
         public readonly string[] strings = new[] {
         "Movies",
@@ -33,7 +37,7 @@ namespace NewsAppMobile.ViewModels
 
         public PopMenuViewModel(IApiNewsService apiNews)
         {
-            //newsService = apiNews;
+            newsService = apiNews;
 
             TapTopic = new DelegateCommand<string>(SelectTopic);
 
@@ -51,7 +55,7 @@ namespace NewsAppMobile.ViewModels
 
         async void SelectTopic(string topic)
         {
-
+            Topic = topic;
         }
 
         async void SearchTopic(string text)
@@ -72,5 +76,15 @@ namespace NewsAppMobile.ViewModels
             }
         }
 
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            var param = new NavigationParameters();
+            param.Add("Category", Topic);
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            
+        }
     }
 }

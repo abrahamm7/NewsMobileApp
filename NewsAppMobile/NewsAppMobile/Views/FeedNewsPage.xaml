@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:MaterialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:fab="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
-    xmlns:local="clr-namespace:NewsAppMobile.Effects">
+    xmlns:local="clr-namespace:NewsAppMobile.Effects"
+    BackgroundColor="#333533">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -17,6 +18,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
         <MaterialFrame:MaterialFrame
             Grid.Row="0"
             Grid.RowSpan="1"
@@ -26,13 +28,14 @@
             CornerRadius="2"
             Elevation="55"
             LightThemeBackgroundColor="#f72585">
-            <StackLayout Padding="15">
+            <StackLayout Padding="1">
                 <fab:FloatingActionButtonView
                     ColorNormal="#f72585"
                     ColorPressed="#121212"
                     Command="{Binding OpenMenuPop}"
                     HorizontalOptions="End"
-                    ImageName="icons8_menu_32.png">
+                    ImageName="icons8_menu_32.png"
+                    VerticalOptions="Start">
                     <fab:FloatingActionButtonView.Triggers>
                         <EventTrigger Event="Clicked">
                             <local:TapButtonMenu />
@@ -40,17 +43,11 @@
                     </fab:FloatingActionButtonView.Triggers>
                 </fab:FloatingActionButtonView>
                 <Label
-                    Margin="10,0,0,0"
-                    FontSize="20"
-                    Text="Hey, Abraham!"
-                    TextColor="#ffffff" />
-                <Label
-                    Margin="0,0,0,0"
                     FontSize="30"
                     HorizontalTextAlignment="Center"
                     Text="Discover the latest news!"
                     TextColor="#ffffff"
-                    VerticalOptions="StartAndExpand" />
+                    VerticalOptions="Center" />
             </StackLayout>
         </MaterialFrame:MaterialFrame>
         <CollectionView
@@ -67,24 +64,29 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="300" />
                         </Grid.RowDefinitions>
                         <SwipeView>
                             <MaterialFrame:MaterialFrame
-                                CornerRadius="10"
                                 Elevation="25"
                                 HeightRequest="250"
-                                LightThemeBackgroundColor="#121212">
+                                LightThemeBackgroundColor="#121212"
+                                Visual="Material">
                                 <StackLayout>
                                     <Image Aspect="AspectFill" Source="{Binding UrlToImage}" />
                                     <Label
                                         FontSize="20"
                                         Text="{Binding Title}"
+                                        TextColor="#ffffff"
                                         VerticalTextAlignment="Center" />
                                 </StackLayout>
+                                <MaterialFrame:MaterialFrame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.TapNews, Source={x:Reference NewsList}}" CommandParameter="{Binding .}" />
+                                </MaterialFrame:MaterialFrame.GestureRecognizers>
                             </MaterialFrame:MaterialFrame>
                             <SwipeView.LeftItems>
                                 <SwipeItem
+                                    BackgroundColor="#333533"
                                     Command="{Binding Path=BindingContext.ShareNewsCommand, Source={x:Reference NewsList}}"
                                     CommandParameter="{Binding .}"
                                     IconImageSource="icons8_share_64.png"
@@ -93,7 +95,6 @@
                         </SwipeView>
                     </Grid>
                 </DataTemplate>
-
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
