@@ -13,7 +13,7 @@ using Plugin.CurrentActivity;
 
 namespace NewsAppMobile.Droid
 {
-    [Activity(Label = "News App", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "News App", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
