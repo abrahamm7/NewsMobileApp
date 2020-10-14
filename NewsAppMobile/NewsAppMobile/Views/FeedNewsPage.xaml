@@ -73,7 +73,11 @@
                                 LightThemeBackgroundColor="#121212"
                                 Visual="Material">
                                 <StackLayout>
-                                    <Image Aspect="AspectFill" Source="{Binding UrlToImage}" />
+                                    <Image Aspect="AspectFill" Source="{Binding UrlToImage}">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TapNews, Source={x:Reference NewsList}}" CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Label
                                         FontSize="20"
                                         Text="{Binding Title}"
