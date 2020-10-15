@@ -41,8 +41,7 @@ namespace NewsAppMobile
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //Pages//
-            containerRegistry.RegisterForNavigation<FeedNewsPage, FeedNewsViewModel>();
-            containerRegistry.RegisterForNavigation<NewsDetailsPage, NewsDetailsViewModel>();
+            containerRegistry.RegisterForNavigation<FeedNewsPage, FeedNewsViewModel>();            
             containerRegistry.RegisterForNavigation<PopMenu, PopMenuViewModel>();
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterForNavigation<NavigationPage>();
