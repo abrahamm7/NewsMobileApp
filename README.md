@@ -1,6 +1,6 @@
 # NewsMobileApp
 
-# This app its a simple application to stay informed with latest world news. 
+# This app it's a simple application to stay informed with latest world news. 
 
 # Screenshots
 
