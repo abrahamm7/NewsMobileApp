@@ -43,6 +43,11 @@ namespace NewsAppMobile.Views
             GetNewsCommand.Execute();
         }
 
+        public override void Initialize(INavigationParameters parameters)
+        {
+            //base.Initialize(parameters);
+        }
+
         public async Task GetNews()
         {
             try
@@ -74,13 +79,15 @@ namespace NewsAppMobile.Views
 
         public async void SelectNews(object obj)
         {
-            await NavigationService.NavigateAsync(new Uri(Links.NewsDetailsPage, UriKind.Relative));
+            var parameters = new NavigationParameters();
+            var data = obj as Article;
+            parameters.Add("DataTitle", data.Title);           
+            parameters.Add("DataContent", data.Content);           
+            parameters.Add("DataAuthor", data.Author);           
+            parameters.Add("DataPublished", data.PublishedAt);           
+            parameters.Add("DataImage", data.UrlToImage);           
+            await NavigationService.NavigateAsync(new Uri(Links.NewsDetailsPage, UriKind.Relative), parameters);
         }
-
-
-
-
-
 
     }
 }

@@ -2,13 +2,17 @@
 <ContentPage
     x:Class="NewsAppMobile.Views.NewsDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#333533">
+    <ScrollView>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding Title, Mode=TwoWay}"
+                TextColor="#ffffff"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
 
-    <StackLayout>
-        <Label
-            HorizontalOptions="CenterAndExpand"
-            Text="Welcome to Xamarin.Forms!"
-            VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    </ScrollView>
 
 </ContentPage>

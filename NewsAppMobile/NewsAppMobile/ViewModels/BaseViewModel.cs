@@ -21,7 +21,7 @@ namespace NewsAppMobile.ViewModels
         public INavigationService NavigationService { get; set; }
         
 
-        public void Initialize(INavigationParameters parameters)
+        public virtual void Initialize(INavigationParameters parameters)
         {
             
         }
@@ -54,19 +54,14 @@ namespace NewsAppMobile.ViewModels
             await PageDialogService.DisplayAlertAsync(title, message, accept, cancel);
         }
 
-        public void OnNavigatedFrom(INavigationParameters parameters)
+        public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
             //Nothing for now//
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
-            //Nothing for now//
-            if (parameters.Count == 0) 
-            {
-                var key = parameters.GetValue<string>("Category");           
-            }
-
+            //Nothing for now//           
         }
     }
 }
