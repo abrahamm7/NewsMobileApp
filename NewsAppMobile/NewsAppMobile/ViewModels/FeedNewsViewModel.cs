@@ -26,6 +26,8 @@ namespace NewsAppMobile.Views
         public DelegateCommand<object> ShareNewsCommand { get; set; }
         public DelegateCommand<object> TapNews { get; set; }
         public DelegateCommand OpenMenuPop { get; set; }
+
+        public string ParameterTopic { get; set; }
        
         public IEnumerable<Article> News { get; set; }
 
@@ -81,6 +83,39 @@ namespace NewsAppMobile.Views
         {            
             var data = obj as Article;
             await Browser.OpenAsync(data.Url);            
+        }
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            
+        }
+
+        public async override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            ParameterTopic = parameters.GetValue<string>("Category");
+            if (ParameterTopic != null)
+            {
+                await GetSpecifiedNews(ParameterTopic);
+            }
+            
+        }
+
+        public async Task GetSpecifiedNews(string category)
+        {
+            try
+            {
+                if (await HasInternetConnection(true))
+                {
+                    RestService.For<IApiNewsService>(Links.ApiUrl);
+                    var request = await newsService.GetSpecifiedNews(category);
+                    News = request.Articles.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"{ex.Message}");
+                await ShowMessage("Error", "An error occured", "Ok");
+            }
         }
 
     }

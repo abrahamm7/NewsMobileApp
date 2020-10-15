@@ -74,16 +74,25 @@
                                 LightThemeBackgroundColor="#121212"
                                 Visual="Material">
                                 <StackLayout>
-                                    <Image Aspect="AspectFill" Source="{Binding UrlToImage}">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="190"
+                                        Source="{Binding UrlToImage}">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Path=BindingContext.TapNews, Source={x:Reference NewsList}}" CommandParameter="{Binding .}" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <Label
-                                        FontSize="18"
+                                        FontSize="15"
                                         Text="{Binding Title}"
                                         TextColor="#ffffff"
                                         VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontSize="13"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding PublishedAt, StringFormat='Published: {0:M/d/yyyy}'}"
+                                        TextColor="#ffffff"
+                                        VerticalOptions="End" />
                                 </StackLayout>
                                 <MaterialFrame:MaterialFrame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Path=BindingContext.TapNews, Source={x:Reference NewsList}}" CommandParameter="{Binding .}" />
