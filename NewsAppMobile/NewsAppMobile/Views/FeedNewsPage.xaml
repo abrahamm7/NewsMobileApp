@@ -69,6 +69,7 @@
                         </Grid.RowDefinitions>
                         <SwipeView>
                             <MaterialFrame:MaterialFrame
+                                CornerRadius="10"
                                 Elevation="25"
                                 HeightRequest="250"
                                 LightThemeBackgroundColor="#121212"
