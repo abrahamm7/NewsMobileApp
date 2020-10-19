@@ -1,4 +1,5 @@
-﻿using NewsAppMobile.Models;
+﻿using NewsAppMobile.AppResources;
+using NewsAppMobile.Models;
 using NewsAppMobile.NavigationLinks;
 using NewsAppMobile.Services;
 using NewsAppMobile.ViewModels;
@@ -59,12 +60,16 @@ namespace NewsAppMobile.Views
                     RestService.For<IApiNewsService>(Links.ApiUrl);
                     var request = await newsService.GetNews();
                     News = request.Articles.ToList();
-                }                             
+                }
+                else
+                {
+                    await ShowMessage("", AppResourcesFile.NoInternet, AppResourcesFile.Confirm);
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"{ex.Message}");
-                await ShowMessage("Error","An error occured", "Ok");
+                await ShowMessage("", AppResourcesFile.GeneralError, AppResourcesFile.Confirm);
             }
         }        
        
@@ -110,11 +115,15 @@ namespace NewsAppMobile.Views
                     var request = await newsService.GetSpecifiedNews(category);
                     News = request.Articles.ToList();
                 }
+                else
+                {
+                    await ShowMessage("", AppResourcesFile.NoInternet, AppResourcesFile.Confirm);
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"{ex.Message}");
-                await ShowMessage("Error", "An error occured", "Ok");
+                await ShowMessage("", AppResourcesFile.GeneralError, AppResourcesFile.Confirm);
             }
         }
 

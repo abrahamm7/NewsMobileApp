@@ -29,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AppResources\AppResourcesFile.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\FeedNewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
